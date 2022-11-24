@@ -1,0 +1,23 @@
+[
+     {
+       "category": "01",
+       "category_name": "MotherBoard",
+       "image": "https://i.ibb.co/0V01jPt/mother-Board1.jpg"
+       
+     },
+     
+     {
+       "category": "02",
+       "category_name": "Gpu",
+       "image": "https://i.ibb.co/jZ8sCPg/gpu1.jpg"
+       
+     },
+     
+     {
+       "category": "03",
+       "category_name": "Mouse",
+       "image": "https://i.ibb.co/g6mqzZ5/mouse1.jpg"
+       
+     }
+     
+]
