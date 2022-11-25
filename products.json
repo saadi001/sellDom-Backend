@@ -1,0 +1,29 @@
+[
+     {
+          "product" : "01",
+          "category" : "MotherBoard",
+          "product_name" : "Gigabyte Aorus B550 Pro AC Motherboard",
+          "image" : "https://i.ibb.co/yWKQfQy/motherboard3.jpg",
+          "location" : "kashipara, cumilla",
+          "resale_price" : "12000",
+          "original_price" : "20000",
+          "years_of_use" : "1 year",
+          "posted_date" : "1 November, 2022",
+          "sellers_name" : "shafin absar",
+          "isVerifies" : true
+     },
+     {
+          "product" : "02",
+          "category" : "MotherBoard",
+          "product_name" : "MSI PRO B660M-A WIFI DDR4 MICRO-ATX 12TH GEN INTEL MOTHERBOARD",
+          "image" : "https://i.ibb.co/H2NXnjd/motherboard4.jpg",
+          "location" : "Hajigong, Chandpur",
+          "resale_price" : "3500",
+          "original_price" : "6000",
+          "years_of_use" : "6 Month",
+          "posted_date" : "6 November, 2022",
+          "sellers_name" : "Joy bagchi",
+          "isVerifies" : false
+     }
+     
+]
