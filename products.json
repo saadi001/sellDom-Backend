@@ -10,7 +10,7 @@
           "years_of_use" : "1 year",
           "posted_date" : "1 November, 2022",
           "sellers_name" : "shafin absar",
-          "isVerifies" : true
+          "isVerified" : true
      },
      {
           "product" : "02",
@@ -23,7 +23,60 @@
           "years_of_use" : "6 Month",
           "posted_date" : "6 November, 2022",
           "sellers_name" : "Joy bagchi",
-          "isVerifies" : false
+          "isVerified" : false
+     },
+     {
+          "product" : "03",
+          "category" : "Gpu",
+          "product_name" : "Gigabyte's GeForce RTX 3080",
+          "image" : "https://i.ibb.co/zr3xjgf/gpu3.jpg",
+          "location" : "Arambag, Bagerhat",
+          "resale_price" : "60000",
+          "original_price" : "50000",
+          "years_of_use" : "4 Month",
+          "posted_date" : "3 October, 2022",
+          "sellers_name" : "Nahidul Islam",
+          "isVerified" : false
+     },
+     {
+          "product" : "04",
+          "category" : "Gpu",
+          "product_name" : "Nvidia GeForce RTX 4090",
+          "image" : "https://i.ibb.co/5504g6t/gpu4.jpg",
+          "location" : "Fokirapul, sylhet",
+          "resale_price" : "120000",
+          "original_price" : "100000",
+          "years_of_use" : "1 Month",
+          "posted_date" : "20 Nobember, 2022",
+          "sellers_name" : "Abrar Hossain",
+          "isVerified" : true
+     },
+     
+     {
+          "product" : "05",
+          "category" : "Mouse",
+          "product_name" : "ONIKUMA Wireless Gaming Mouse 2.4G Mouse",
+          "image" : "https://i.ibb.co/pr5QxHV/mouse2.jpg",
+          "location" : "Aligonj, chandpur",
+          "resale_price" : "11000",
+          "original_price" : "8000",
+          "years_of_use" : "1.5 year",
+          "posted_date" : "5 june, 2022",
+          "sellers_name" : "Faiyaz Ahmed",
+          "isVerified" : false
+     },
+     {
+          "product" : "06",
+          "category" : "Mouse",
+          "product_name" : "Logitech MX Master 3S Wireless Mouse 8K DPI Ultra-Fast Scrolling Mouse",
+          "image" : "https://i.ibb.co/tsxfvts/mouse3.webp",
+          "location" : "hajirbazar, Chandpur",
+          "resale_price" : "6000",
+          "original_price" : "5000",
+          "years_of_use" : "3 Month",
+          "posted_date" : "30 October, 2022",
+          "sellers_name" : "Jahidul Islam",
+          "isVerified" : false
      }
      
 ]
