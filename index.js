@@ -17,7 +17,9 @@ async function run(){
      try{
           const categoryCollections = client.db('sellDomDB').collection('categories');
           const productsCollections = client.db('sellDomDB').collection('products');
+          const usersCollections = client.db('sellDomDB').collection('users');
 
+          // getting categories          
           app.get('/categories',async(req, res)=>{
                const query = {}
                const categories = await categoryCollections.find(query).toArray()
@@ -32,9 +34,26 @@ async function run(){
           })
 
           app.get('/products', async(req, res)=>{
+               let query = {}
+               if(req.query.category){
+                    query={
+                         category: req.query.category
+                    }
+               }
+               const categoryProduct = await productsCollections.find(query).toArray()
+               res.send(categoryProduct)
+          })
+
+          app.post('/users', async(req, res)=>{
+               const query = req.body;
+               const result = await usersCollections.insertOne(query)
+               res.send(result);
+          })
+
+          app.get('/users', async(req, res)=>{
                const query = {}
-               const products = await productsCollections.find(query).toArray()
-               res.send(products)
+               const users = await usersCollections.find(query).toArray()
+               res.send(users)
           })
 
      }
