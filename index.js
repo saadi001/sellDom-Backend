@@ -18,6 +18,7 @@ async function run(){
           const categoryCollections = client.db('sellDomDB').collection('categories');
           const productsCollections = client.db('sellDomDB').collection('products');
           const usersCollections = client.db('sellDomDB').collection('users');
+          const bookingsCollections = client.db('sellDomDB').collection('bookings');
 
           // getting categories          
           app.get('/categories',async(req, res)=>{
@@ -54,6 +55,27 @@ async function run(){
                const query = {}
                const users = await usersCollections.find(query).toArray()
                res.send(users)
+          })
+
+          app.get('/bookings', async(req, res)=>{
+               const query = {}
+               const bookings = await bookingsCollections.find(query).toArray()
+               res.send(bookings)
+          })
+
+          app.post('/bookings', async(req, res)=>{
+               const booking = req.body;
+               const query = {
+                    item : booking.item,
+                    email : booking.email
+               }
+               const alreadyBooked = await bookingsCollections.find(query).toArray()
+               if(alreadyBooked.length){
+                    const message = `You already booked ${booking.item}`
+                    return res.send({acknowledged: false, message})
+               }
+               const result = await bookingsCollections.insertOne(booking)
+               res.send(result)
           })
 
      }
