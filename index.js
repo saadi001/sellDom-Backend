@@ -25,7 +25,7 @@ function verifyJWT(req, res, next){
                return res.status(403).send({message: 'forbidden access'})
           }
           req.decoded = decoded;
-          next()
+          next();
      })
 }
 
@@ -87,12 +87,7 @@ async function run(){
                res.send(result)
           })
 
-          // users 
-          app.post('/users', async(req, res)=>{
-               const query = req.body;
-               const result = await usersCollections.insertOne(query)
-               res.send(result);
-          })
+          // users           
 
           app.get('/users', async(req, res)=>{
                const query = {}
@@ -100,7 +95,15 @@ async function run(){
                res.send(users)
           })
 
-          app.get('/jwt',async(req, res)=>{
+          app.get('/users/admin/:email',async(req, res)=>{
+               const email = req.params.email;
+               const query = {email: email}
+                const user = await usersCollections.findOne(query)
+               res.send({isAdmin: user?.author === 'admin'})
+          })
+          
+
+          app.get('/jwt', async(req, res)=>{
                const email = req.query.email;
                const query = {email:email}
                const user = await usersCollections.findOne(query)
@@ -122,6 +125,33 @@ async function run(){
                res.send(result)
           })
 
+          app.post('/users', async(req, res)=>{
+               const query = req.body;
+               const result = await usersCollections.insertOne(query)
+               res.send(result);
+          })
+
+          app.put('/users/admin/:id',verifyJWT, async(req, res)=>{
+               const decodedEmail = req.decoded.email;
+               const query = {email: decodedEmail}
+               const user = await usersCollections.findOne(query);
+
+               if(user?.author !== 'admin'){
+                    return res.status(403).send({message: 'forbidden access'})
+               }
+
+               const id = req.params.id;
+               const filter = {_id: ObjectId(id)}
+               const options = {upsert: true}
+               const updatedDoc = {
+                    $set:{
+                         author: 'admin'
+                    }
+               }
+               const result = await usersCollections.updateOne(filter,updatedDoc, options)
+               res.send(result)
+          })
+
           app.delete('/seller/:id', async(req, res)=>{
                const id = req.params.id;
                const filter = {_id: ObjectId(id)}
@@ -140,13 +170,6 @@ async function run(){
                const bookings = await bookingsCollections.find(query).toArray()
                res.send(bookings)
           })
-
-          // app.get('/products', async(req, res)=>{
-               
-          //      const query = {}
-          //      const bookings = await productsCollections.find(query).toArray()
-          //      res.send(bookings)
-          // })
 
           app.post('/bookings', async(req, res)=>{
                const booking = req.body;
