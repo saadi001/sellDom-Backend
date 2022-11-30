@@ -35,6 +35,8 @@ async function run(){
           const productsCollections = client.db('sellDomDB').collection('products');
           const usersCollections = client.db('sellDomDB').collection('users');
           const bookingsCollections = client.db('sellDomDB').collection('bookings');
+          const advertiseCollections = client.db('sellDomDB').collection('advertise');
+          
 
           // categories          
           app.get('/categories',async(req, res)=>{
@@ -98,10 +100,16 @@ async function run(){
           app.get('/users/admin/:email',async(req, res)=>{
                const email = req.params.email;
                const query = {email: email}
-                const user = await usersCollections.findOne(query)
+               const user = await usersCollections.findOne(query)
                res.send({isAdmin: user?.author === 'admin'})
           })
           
+          app.get('/users/seller/:email', async(req, res)=>{
+               const email = req.params.email;
+               const query = {email}
+               const seller = await usersCollections.findOne(query)
+               res.send({isSeller: seller?.role === 'seller'})
+          })
 
           app.get('/jwt', async(req, res)=>{
                const email = req.query.email;
@@ -183,6 +191,18 @@ async function run(){
                     return res.send({acknowledged: false, message})
                }
                const result = await bookingsCollections.insertOne(booking)
+               res.send(result)
+          })
+
+          app.get('/advertise',async(req, res)=>{
+               const query = {}
+               const advertise = await advertiseCollections.find(query).toArray()
+               res.send(advertise)
+          })
+
+          app.post('/advertise',async(req, res)=>{
+               const query = req.body;
+               const result = await advertiseCollections.insertOne(query)
                res.send(result)
           })
 
